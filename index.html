@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f7f4">
+    <meta name="description" content="Turn your study notes into a quiz. Practice, check your answers, and review what you learned with Quizy.">
+    <title>Quizy — study smarter, one question at a time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Quizy home">
+          <img class="brand-mark" src="assets/quizy-logo.png" alt="Sulu State University seal" width="34" height="42">
+          <span>quizy<span class="brand-period">.</span></span>
+        </a>
+
+        <div class="sidebar-label">YOUR WORKSPACE</div>
+        <nav class="side-nav" aria-label="Main navigation">
+          <a class="nav-link nav-link-active" href="#workspace" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg>
+            <span>My workspace</span>
+          </a>
+          <a class="nav-link" href="#how-it-works">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.8 9a2.3 2.3 0 1 1 3.7 1.8c-.9.7-1.5 1-1.5 2.2M12 16.5h.01"/></svg>
+            <span>How it works</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-illustration" aria-hidden="true">
+            <div class="illustration-sparkle">✳</div>
+            <div class="illustration-card"><span></span><span></span><span></span></div>
+            <div class="illustration-pencil"></div>
+          </div>
+          <p class="sidebar-note">Little by little,<br>you learn a lot.</p>
+          <div class="sidebar-credit"><span class="credit-dot"></span> Your personal study space</div>
+        </div>
+      </aside>
+
+      <main id="workspace" class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="breadcrumb-current">New quiz</strong></div>
+          <div class="topbar-right">
+            <span class="privacy-note"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4.5" y="8.5" width="11" height="8" rx="2"/><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5"/></svg>Your files stay on this device</span>
+            <button class="avatar-button" id="profile-preview-button" type="button" aria-label="View MEDUSANAIN branding">
+              <img class="avatar" src="assets/profile.png" alt="" width="29" height="29">
+            </button>
+          </div>
+        </header>
+
+        <dialog class="profile-dialog" id="profile-dialog" aria-label="MEDUSANAIN branding preview">
+          <button class="profile-dialog-close" id="profile-dialog-close" type="button" aria-label="Close MEDUSANAIN branding preview">×</button>
+          <img src="assets/profile.png" alt="MEDUSANAIN branding">
+          <p>MEDUSANAIN</p>
+        </dialog>
+
+        <section class="page-heading">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> YOUR STUDY STUDIO</div>
+            <h1>Make your module<br>your <span class="heading-accent">next A.</span></h1>
+            <p class="heading-copy">Drop in your study material. We’ll turn it into a quiz so you can<br class="desktop-break"> check what’s sticking—and what to review.</p>
+          </div>
+          <div class="heading-art" aria-hidden="true">
+            <div class="art-sun"></div>
+            <div class="art-pencil"><div></div></div>
+            <div class="art-paper art-paper-back"></div>
+            <div class="art-paper art-paper-front">
+              <span class="art-paper-check">✓</span>
+              <span class="art-paper-line line-one"></span>
+              <span class="art-paper-line line-two"></span>
+              <span class="art-paper-line line-three"></span>
+              <span class="art-paper-line line-four"></span>
+            </div>
+            <div class="art-spark art-spark-one">✳</div>
+            <div class="art-spark art-spark-two">✦</div>
+          </div>
+        </section>
+
+        <section id="setup-panel" class="setup-grid" aria-label="Create a quiz">
+          <div class="card upload-card">
+            <div class="card-heading">
+              <div class="step-icon step-icon-lavender">01</div>
+              <div>
+                <h2>Bring your material</h2>
+                <p>Start with the module you want to master.</p>
+              </div>
+              <span class="card-heading-tag">YOUR CONTENT</span>
+            </div>
+
+            <label class="dropzone" id="dropzone" for="file-input" tabindex="0">
+              <input id="file-input" type="file" accept=".txt,.md,.markdown,.pdf,.docx,text/plain,text/markdown,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+              <span class="upload-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M16 21V5m0 0-6 6m6-6 6 6"/><path d="M7 19v6.5A2.5 2.5 0 0 0 9.5 28h13a2.5 2.5 0 0 0 2.5-2.5V19"/></svg>
+              </span>
+              <span class="dropzone-title">Drop your file here, or <span>browse</span></span>
+              <span class="dropzone-hint">PDF, DOCX, TXT or Markdown · max 15 MB</span>
+            </label>
+            <div class="or-divider"><span></span><span>OR PASTE YOUR NOTES</span><span></span></div>
+            <label class="visually-hidden" for="module-text">Paste your study material</label>
+            <textarea id="module-text" class="notes-input" placeholder="Paste a chapter, your class notes, or a study guide..." rows="4"></textarea>
+            <div class="upload-footer">
+              <span id="file-status" class="file-status" aria-live="polite">Your material is processed privately in your browser.</span>
+              <button id="clear-material" class="text-button" type="button" hidden>Clear</button>
+            </div>
+          </div>
+
+          <div class="card settings-card">
+            <div class="card-heading">
+              <div class="step-icon step-icon-peach">02</div>
+              <div>
+                <h2>Set your session</h2>
+                <p>Make this practice session yours.</p>
+              </div>
+            </div>
+
+            <fieldset class="option-group">
+              <legend>NUMBER OF QUESTIONS</legend>
+              <div class="segmented-control count-control" role="group" aria-label="Number of questions">
+                <button type="button" class="segment" data-count="10" aria-pressed="true">10 <span>quick</span></button>
+                <button type="button" class="segment" data-count="20" aria-pressed="false">20 <span>steady</span></button>
+                <button type="button" class="segment" data-count="30" aria-pressed="false">30 <span>deep dive</span></button>
+              </div>
+            </fieldset>
+
+            <fieldset class="option-group difficulty-group">
+              <legend>DIFFICULTY</legend>
+              <div class="difficulty-list">
+                <button type="button" class="difficulty-option difficulty-easy selected" data-difficulty="easy" aria-pressed="true">
+                  <span class="difficulty-icon" aria-hidden="true">☀</span>
+                  <span class="difficulty-label"><strong>Easy</strong><small>Warm up &amp; recall · 25 sec</small></span>
+                  <span class="radio-indicator"></span>
+                </button>
+                <button type="button" class="difficulty-option difficulty-hard" data-difficulty="hard" aria-pressed="false">
+                  <span class="difficulty-icon" aria-hidden="true">↗</span>
+                  <span class="difficulty-label"><strong>Hard</strong><small>Think it through · 15 sec</small></span>
+                  <span class="radio-indicator"></span>
+                </button>
+                <button type="button" class="difficulty-option difficulty-extreme" data-difficulty="extreme" aria-pressed="false">
+                  <span class="difficulty-icon" aria-hidden="true">✳</span>
+                  <span class="difficulty-label"><strong>Extreme</strong><small>Challenge yourself · 10 sec</small></span>
+                  <span class="radio-indicator"></span>
+                </button>
+              </div>
+            </fieldset>
+
+            <button id="generate-button" class="primary-button" type="button">
+              <span>Create my quiz</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
+            </button>
+            <p class="button-caption">Made from your material, just for you.</p>
+          </div>
+        </section>
+
+        <section id="quiz-panel" class="card quiz-panel" aria-label="Quiz" hidden></section>
+        <section id="results-panel" class="card results-panel" aria-label="Quiz results" hidden></section>
+
+        <section id="how-it-works" class="how-section">
+          <div class="how-heading"><span>GOOD TO KNOW</span><span class="how-heading-line"></span></div>
+          <div class="how-grid">
+            <article class="how-item"><span class="how-number">01</span><div><h3>Made from your notes</h3><p>Quizy finds key terms in your material and builds practice questions around them.</p></div></article>
+            <article class="how-item"><span class="how-number">02</span><div><h3>Feedback as you go</h3><p>Choose an answer to check it, then see the original context in your review.</p></div></article>
+            <article class="how-item"><span class="how-number">03</span><div><h3>Private by design</h3><p>Your file is read on this device. Your notes are never uploaded or saved.</p></div></article>
+          </div>
+          <footer class="page-footer"><span>Made for curious minds <span class="footer-heart">♥</span></span><span>YOUR STUDY SPACE, YOUR PACE</span></footer>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
